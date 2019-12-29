@@ -119,7 +119,6 @@ namespace udemycsharpcourse
     public bool ComputeState()
     {
       bool winnerExists;
-      Winner winner;
       CheckXAxis(out winnerExists);
       if (winnerExists)
       {
