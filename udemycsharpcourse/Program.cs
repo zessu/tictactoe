@@ -8,15 +8,18 @@ namespace udemycsharpcourse
         {
             string[] players = { "player one", "plasyer two" };
             TicTacToeGame Game = new TicTacToeGame(players);
-            Game.DrawBoard();
+            Game.IntroGame();
         }
     }
-
 
     public class TicTacToeGame
     {
         private string[] _players;
-        private string[,] Board = new string[3, 3];
+        private string[,] Board = {
+            { "1", "2", "3"},
+            { "4", "5", "6"},
+            { "7", "8", "9"},
+        };
         private string winner;
         private string currentPlayer = "player one";
         private int playerChoice;
@@ -32,17 +35,16 @@ namespace udemycsharpcourse
         }
         public void DrawBoard()
         {
-            Console.WriteLine(
-                "     |     |     |" + "\n" +
-                "  1  |  2  |  3  |" + "\n" +
-                "_____|_____|_____" + "\n" +
-                "     |     |     " + "\n" +
-                "  4  |  5  |  6  " + "\n" +
-                "_____|_____|_____" + "\n" +
-                "     |     |     " + "\n" +
-                "  7  |  8  |  9  |" + "\n" +
-                "     |     |     ");
-            IntroGame();
+            Console.Clear();
+            Console.WriteLine("     |     |     " + "\n");
+            Console.WriteLine(" {0}   |  {1}  | {2} " + "\n", Board[0, 0], Board[0, 1], Board[0, 2]);
+            Console.WriteLine("_____|_____|_____" + "\n");
+            Console.WriteLine("     |     |     " + "\n");
+            Console.WriteLine(" {0}   |  {1}  | {2} " + "\n", Board[1, 0], Board[1, 1], Board[1, 2]);
+            Console.WriteLine("_____|_____|_____" + "\n");
+            Console.WriteLine("     |     |     " + "\n");
+            Console.WriteLine(" {0}   |  {1}  | {2} " + "\n", Board[2, 0], Board[2, 1], Board[2, 2]);
+            Console.WriteLine("     |     |     " + "\n");
         }
 
         public void IntroGame()
@@ -54,6 +56,7 @@ namespace udemycsharpcourse
 
         public void StartRound()
         {
+            DrawBoard();
             Console.WriteLine("current player, {0}", currentPlayer);
             string playerInput = Console.ReadLine();
             if (int.TryParse(playerInput, out playerChoice))
@@ -187,6 +190,7 @@ namespace udemycsharpcourse
 
         public void EndGame()
         {
+            DrawBoard();
             Console.WriteLine("{0} won", currentPlayer);
         }
 
